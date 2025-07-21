@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    min-width: 640px;
+    min-height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+.sidebar{
+    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+.sidebar *{
+    border: 2px solid yellow;
+}
+.home{
+
+}
+.sbProjects{
+
+}
+.sdProjectList{
+
+}
+.sidebar.user{
+    justify-self: flex-end;
+}
+.userPic{
+    height: 30px;
+    width: 30px;
+}
+.content{
+    border: 2px solid blue;
+}
