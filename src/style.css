@@ -156,7 +156,9 @@ body{
     grid-template-rows: 20% 80%;
     gap: 5px;
 }
-header{
+
+/* MAINPAGE */
+#mainPage header{
     display: grid;
     grid-template-columns: 80% 20%;
     grid-template-areas: 
@@ -164,19 +166,19 @@ header{
     "subtitle newTask";
     align-items: center;
 }
-header>h1{
+#mainPage header>h1{
     grid-area: title;
     font-family: gobold_bold;
     font-size: 45px;
 }
-header>h3{
+#mainPage header>h3{
     grid-area: subtitle;
     font-family: gobold_thin;
     font-size: 20px;
     font-weight: lighter;
     color: rgb(181, 181, 182);
 }
-header>.newTask{
+#mainPage header>.newTask{
     grid-area: newTask;
     display: flex;
     flex-direction: column;
@@ -184,11 +186,13 @@ header>.newTask{
     align-items: center;
     height: 80%;
     gap: 3px;
+    transition: ease 0.4s;
 }
-header>.newTask:hover{
+#mainPage header>.newTask:hover{
     cursor: pointer;
+    scale: 110%;
 }
-header>.newTask>div{
+#mainPage header>.newTask>div{
     border: 2px solid rgb(90, 90, 90);
     background-color: rgb(75, 75, 75);
     height: 50px;
@@ -201,18 +205,20 @@ header>.newTask>div{
     font-size: 30px;
     color: rgb(156, 156, 156);
 }
-header>.newTask:hover>div{
+#mainPage header>.newTask:hover>div{
     border: 2px solid rgb(0, 32, 136);
     background-color: rgb(7, 6, 102);
     color: rgb(199, 199, 199);
 }
-header>.newTask>p{
+#mainPage header>.newTask>p{
     font-family: gobold_thin;
     font-size: 10px;
 }
-header>.newTask:hover>p{
+#mainPage header>.newTask:hover>p{
     color: rgb(132, 161, 255);
 }
+
+/* MAINPAGE AND PROJECT PAGE */
 main{
     border-top: 1px solid white;
     padding-top: 10px;
@@ -252,10 +258,10 @@ main>div>p{
     font-size: 14px;
     padding: 10px 5px;
 }
-.cardPriority{
-                                                        background-color: red;
-    border-radius: 10px 0 0 10px;
-}
+                                                        .cardPriority{
+                                                            background-color: red;
+                                                            border-radius: 10px 0 0 10px;
+                                                        }
 .card:hover{
     box-shadow: 3px 3px 10px 0 rgb(0, 0, 0);
     scale: 110%;
@@ -267,3 +273,111 @@ main>div>p{
 .dropzone.dragover {
   background-color: purple;
 } */
+
+
+/* ALL PROJECTS PAGE */
+#projectsPage header{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-areas: 
+    "title newTask";
+    align-items: center;
+    padding-bottom: 10px;
+}
+#projectsPage header>h1{
+    grid-area: title;
+    font-family: gobold_bold;
+    font-size: 45px;
+}
+#projectsPage header>.newProject{
+    grid-area: newTask;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    gap: 3px;
+    transition: ease 0.4s;
+}
+#projectsPage header>.newProject:hover{
+    cursor: pointer;
+    scale: 110%;
+}
+#projectsPage header>.newProject>div{
+    border: 2px solid rgb(90, 90, 90);
+    background-color: rgb(75, 75, 75);
+    height: 50px;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-family: roboto;
+    font-size: 30px;
+    color: rgb(156, 156, 156);
+}
+#projectsPage header>.newProject:hover>div{
+    border: 2px solid rgb(0, 32, 136);
+    background-color: rgb(7, 6, 102);
+    color: rgb(199, 199, 199);
+}
+#projectsPage header>.newProject>p{
+    font-family: gobold_thin;
+    font-size: 10px;
+}
+#projectsPage header>.newProject:hover>p{
+    color: rgb(132, 161, 255);
+}
+.allProjects{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.projectCard{
+    background-color: white;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 10% 60% 30%;
+    cursor: pointer;
+    transition: ease 0.5s;
+}
+                                                    .projectPriority{
+                                                        background-color: red;
+                                                        border-radius: 10px 0 0 10px;
+                                                    }
+.projectTitle{
+    color: black;
+    font-family: gobold;
+    font-size: 15px;
+    padding: 10px;
+}
+.progressDIV{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.progressBar{
+    width: 90%;
+    height: 50%;
+
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: initial;
+    border-radius: 10px;
+    background-color: rgb(194, 194, 194);
+}
+                                                    progress::-moz-progress-bar {
+                                                    background-color: red;
+                                                    }
+/* WebKit (Chrome, Safari) */
+.progressBar::-webkit-progress-bar {
+  background-color: #eee;
+}
+                                                    .progressBar::-webkit-progress-value {
+                                                    background-color: red;
+                                                    }
+.projectCard:hover{
+    box-shadow: 3px 3px 10px 0 rgb(0, 0, 0);
+    scale: 105%;
+    cursor: pointer;
+}
