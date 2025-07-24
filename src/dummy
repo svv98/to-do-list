@@ -1,0 +1,119 @@
+            
+            
+TASKS INFO:
+    <dialog id="infoTaskModal" class="info modal">
+        <div class="infoContent">
+            <div class="infoTitle">
+                <h1>TASK TITLE</h1>                
+            </div>
+            <div class="infoProject">
+                <p>Project</p>
+            </div>
+            <div class="infoStatus">
+                <p class="infoLabel">TASK STATUS</p>
+                <p class="infoData">To Do</p>
+            </div>
+            <div class="infoDate">
+                <p class="infoLabel">DUE DATE</p>
+                <p class="infoData">Wed 24/Dec/2025</p>
+            </div>
+            <div class="infoPriority">
+                <svg viewBox="0 0 24 24" fill="red" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier"> 
+                        <path d="M21.7605 15.92L15.3605 4.4C14.5005 2.85 13.3105 2 12.0005 2C10.6905 2 9.50047 2.85 8.64047 4.4L2.24047 15.92C1.43047 17.39 1.34047 18.8 1.99047 19.91C2.64047 21.02 3.92047 21.63 5.60047 21.63H18.4005C20.0805 21.63 21.3605 21.02 22.0105 19.91C22.6605 18.8 22.5705 17.38 21.7605 15.92ZM11.2505 9C11.2505 8.59 11.5905 8.25 12.0005 8.25C12.4105 8.25 12.7505 8.59 12.7505 9V14C12.7505 14.41 12.4105 14.75 12.0005 14.75C11.5905 14.75 11.2505 14.41 11.2505 14V9ZM12.7105 17.71C12.6605 17.75 12.6105 17.79 12.5605 17.83C12.5005 17.87 12.4405 17.9 12.3805 17.92C12.3205 17.95 12.2605 17.97 12.1905 17.98C12.1305 17.99 12.0605 18 12.0005 18C11.9405 18 11.8705 17.99 11.8005 17.98C11.7405 17.97 11.6805 17.95 11.6205 17.92C11.5605 17.9 11.5005 17.87 11.4405 17.83C11.3905 17.79 11.3405 17.75 11.2905 17.71C11.1105 17.52 11.0005 17.26 11.0005 17C11.0005 16.74 11.1105 16.48 11.2905 16.29C11.3405 16.25 11.3905 16.21 11.4405 16.17C11.5005 16.13 11.5605 16.1 11.6205 16.08C11.6805 16.05 11.7405 16.03 11.8005 16.02C11.9305 15.99 12.0705 15.99 12.1905 16.02C12.2605 16.03 12.3205 16.05 12.3805 16.08C12.4405 16.1 12.5005 16.13 12.5605 16.17C12.6105 16.21 12.6605 16.25 12.7105 16.29C12.8905 16.48 13.0005 16.74 13.0005 17C13.0005 17.26 12.8905 17.52 12.7105 17.71Z"></path> 
+                    </g>
+                </svg>
+                <p class="infoData">LOW</p>
+                <p class="infoLabel">PRIORITY</p>
+            </div>
+            <div class="infoDescription">
+                <p class="infoLabel">DESCRIPTION</p>
+                <p class="infoData">
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit. 
+                    Consectetur adipiscing elit quisque faucibu.
+                    Lorem ipsum dolor sit amet consectetur adipiscing.
+                </p>
+            </div>
+            <div class="infoNote">
+                <p class="infoLabel">NOTES</p>
+                <p class="infoData">
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit. 
+                    Consectetur adipiscing elit quisque faucibu.
+                    Lorem ipsum dolor sit amet consectetur adipiscing.
+                </p>
+            </div>
+        </div>
+    </dialog>
+
+TASKS EDITS:
+Title: <div class="editInfo infoTitle">
+                <label for="taskTitle" class="infoLabel">Title</label>
+                <input type="text" id="taskTitle" name="taskTitle" value="test1">
+            </div>
+Projects: <div class="editInfo infoProject">
+                <label for="taskProject" class="infoLabel">Project</label>
+                <select id="taskProject" name="taskProject">
+                    <option value=""> </option>
+                    <option value="p1">Daily Missions</option>
+                    <option value="p2">Keep This Town From Exploding</option>
+                    <option value="p3">Project 3</option>
+                </select>
+            </div>
+Status: <div class="editInfo infoStatus">
+                <label for="taskStatus" class="infoLabel">TASK STATUS</label>
+                <select id="taskStatus" name="taskStatus">
+                    <option value="todo">To Do</option>
+                    <option value="doing">Doing</option>
+                    <option value="done">Done</option>
+                </select>
+            </div>
+DueDate: <div class="editInfo infoDate">
+                <label for="taskDueDate" class="infoLabel">DUE DATE</label>
+                <input type="date" id="taskDueDate" name="taskDueDate" value="2025-07-23" min="2000-01-01" max="2100-12-31"/>
+            </div>
+Priority: <div class="editInfo infoPriority">
+                <svg viewBox="0 0 24 24" fill="red" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier"> 
+                        <path d="M21.7605 15.92L15.3605 4.4C14.5005 2.85 13.3105 2 12.0005 2C10.6905 2 9.50047 2.85 8.64047 4.4L2.24047 15.92C1.43047 17.39 1.34047 18.8 1.99047 19.91C2.64047 21.02 3.92047 21.63 5.60047 21.63H18.4005C20.0805 21.63 21.3605 21.02 22.0105 19.91C22.6605 18.8 22.5705 17.38 21.7605 15.92ZM11.2505 9C11.2505 8.59 11.5905 8.25 12.0005 8.25C12.4105 8.25 12.7505 8.59 12.7505 9V14C12.7505 14.41 12.4105 14.75 12.0005 14.75C11.5905 14.75 11.2505 14.41 11.2505 14V9ZM12.7105 17.71C12.6605 17.75 12.6105 17.79 12.5605 17.83C12.5005 17.87 12.4405 17.9 12.3805 17.92C12.3205 17.95 12.2605 17.97 12.1905 17.98C12.1305 17.99 12.0605 18 12.0005 18C11.9405 18 11.8705 17.99 11.8005 17.98C11.7405 17.97 11.6805 17.95 11.6205 17.92C11.5605 17.9 11.5005 17.87 11.4405 17.83C11.3905 17.79 11.3405 17.75 11.2905 17.71C11.1105 17.52 11.0005 17.26 11.0005 17C11.0005 16.74 11.1105 16.48 11.2905 16.29C11.3405 16.25 11.3905 16.21 11.4405 16.17C11.5005 16.13 11.5605 16.1 11.6205 16.08C11.6805 16.05 11.7405 16.03 11.8005 16.02C11.9305 15.99 12.0705 15.99 12.1905 16.02C12.2605 16.03 12.3205 16.05 12.3805 16.08C12.4405 16.1 12.5005 16.13 12.5605 16.17C12.6105 16.21 12.6605 16.25 12.7105 16.29C12.8905 16.48 13.0005 16.74 13.0005 17C13.0005 17.26 12.8905 17.52 12.7105 17.71Z"></path> 
+                    </g>
+                </svg>
+                <select id="taskPriotity" name="taskPriotity">
+                    <option value="low">LOW</option>
+                    <option value="min">MINOR</option>
+                    <option value="mod">MODERATE</option>
+                    <option value="imp">IMPORTANT</option>
+                    <option value="vim">VERY IMPORTANT!</option>
+                </select>
+                <p class="infoLabel">PRIORITY</p>
+            </div>
+Description: <div class="editInfo infoDescription">
+                <label for="taskDescription" class="infoLabel">DESCRIPTION</label>
+                <textarea id="taskDescription" name="taskDescription">test1</textarea>
+            </div>
+Notes: <div class="editInfo infoNote">
+                <label for="taskNote" class="infoLabel">NOTES</label>
+                <textarea id="taskNote" name="taskNote">test1</textarea>
+            </div>
+
+
+PRIORITY COLORS:
+
+LOW     green
+MINOR       yellowgreen
+MODERATE        yellow
+IMPORTANT       orangered
+VERY IMPORTANT!     red
+
+    text-shadow:
+    0 0 2px green,
+    0 0 5px green,
+    0 0 10px green,
+    0 0 15px green,
+    0 0 20px green;
+
+
+

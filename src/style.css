@@ -4,11 +4,6 @@
          url('./fonts/gobold_bold-webfont.woff') format('woff');
 }
 @font-face {
-    font-family: 'gobold_high';
-    src: url('./fonts/gobold_high-webfont.woff2') format('woff2'),
-         url('./fonts/gobold_high-webfont.woff') format('woff');
-}
-@font-face {
     font-family: 'gobold_light';
     src: url('./fonts/gobold_light-webfont.woff2') format('woff2'),
          url('./fonts/gobold_light-webfont.woff') format('woff');
@@ -38,7 +33,7 @@
     src: url('./fonts/roboto-regular-webfont.woff2') format('woff2'),
          url('./fonts/roboto-regular-webfont.woff2') format('woff');
 }
-/* gobold_bold   gobold_high   gobold   gobold_light   gobold_thin   gobold_uplow   gobold_lowplus   roboto */
+/* gobold_bold   gobold   gobold_light   gobold_thin   gobold_uplow   gobold_lowplus   roboto */
 
 *{
     box-sizing: border-box;
@@ -49,6 +44,9 @@
 body{
     min-width: 640px;
     min-height: 500px;
+}
+
+.container{
     display: grid;
     grid-template-columns: 20% 80%;
     background-image: url(./media/3242971.jpg);
@@ -166,7 +164,7 @@ body{
     "subtitle newTask";
     align-items: center;
 }
-#mainPage header>h1{
+#mainPage header h1{
     grid-area: title;
     font-family: gobold_bold;
     font-size: 45px;
@@ -218,7 +216,7 @@ body{
     color: rgb(132, 161, 255);
 }
 
-/* MAINPAGE AND PROJECT PAGE */
+/* MAINPAGE AND SELECTED PROJECT PAGE */
 main{
     border-top: 1px solid white;
     padding-top: 10px;
@@ -284,7 +282,7 @@ main>div>p{
     align-items: center;
     padding-bottom: 10px;
 }
-#projectsPage header>h1{
+#projectsPage header h1{
     grid-area: title;
     font-family: gobold_bold;
     font-size: 45px;
@@ -336,28 +334,33 @@ main>div>p{
 .projectCard{
     background-color: white;
     border-radius: 10px;
+    width: 100%;
     display: grid;
-    grid-template-columns: 10% 60% 30%;
+    grid-template-columns: 10% 60% 25%;
     cursor: pointer;
     transition: ease 0.5s;
 }
-                                                    .projectPriority{
-                                                        background-color: red;
-                                                        border-radius: 10px 0 0 10px;
-                                                    }
+.projectPriority{
+    grid-column: 1/2;
+    background-color: red;
+    border-radius: 10px 0 0 10px;
+    height: 100%;
+}
 .projectTitle{
+    grid-column: 2/3;
     color: black;
     font-family: gobold;
     font-size: 15px;
     padding: 10px;
 }
 .progressDIV{
+    grid-column: 3/4;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .progressBar{
-    width: 90%;
+    width: 100%;
     height: 50%;
 
     -webkit-appearance: none;
@@ -381,3 +384,888 @@ main>div>p{
     scale: 105%;
     cursor: pointer;
 }
+
+
+/* SELECTED PROJECT PAGE */
+#selectedProjectPage header{
+    display: grid;
+    grid-template: auto auto auto / 70% 30%;
+    grid-template-areas: 
+    "title newTask"
+    "progressBar newTask"
+    "dueDate newTask";
+    align-items: center;
+    padding-bottom: 10px;
+}
+#selectedProjectPage .headerTitle{
+    position: relative;
+    width: fit-content;
+    margin-bottom: -2px;
+}
+#selectedProjectPage header h1{
+    grid-area: title;
+    font-family: gobold_bold;
+    font-size: 45px;
+}
+#selectedProjectPage header .editProject{
+    position: absolute;
+    top: -100%;
+    font-family: gobold;
+    font-size: 15px;
+    text-shadow:
+    0 0 7px rgb(107, 106, 106),
+    0 0 10px rgb(43, 90, 182),
+    0 0 21px rgb(25, 57, 128),
+    0 0 42px rgb(7, 19, 44);
+}
+#selectedProjectPage .headerTitle:hover{
+    background-color: rgba(0, 0, 0, 0.452);
+    cursor: pointer;
+}
+#selectedProjectPage .headerTitle:hover h1{
+    color: rgba(255, 255, 255, 0.418);
+}
+#selectedProjectPage .headerTitle:hover .editProject{
+    top: 0;
+    right: 0;
+}
+#selectedProjectPage header>.newProjectTask{
+    grid-area: newTask;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    gap: 3px;
+    transition: ease 0.4s;
+}
+#selectedProjectPage header>.newProjectTask:hover{
+    cursor: pointer;
+    scale: 110%;
+}
+#selectedProjectPage header>.newProjectTask>div{
+    border: 2px solid rgb(90, 90, 90);
+    background-color: rgb(75, 75, 75);
+    height: 60px;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-family: roboto;
+    font-size: 35px;
+    color: rgb(156, 156, 156);
+}
+#selectedProjectPage header>.newProjectTask:hover>div{
+    border: 2px solid rgb(0, 32, 136);
+    background-color: rgb(7, 6, 102);
+    color: rgb(199, 199, 199);
+}
+#selectedProjectPage header>.newProjectTask>p{
+    font-family: gobold_thin;
+    font-size: 13px;
+}
+#selectedProjectPage header>.newProjectTask:hover>p{
+    color: rgb(132, 161, 255);
+}
+#selectedProjectPage .projectProgressDIV{
+    grid-area: progressBar;
+    display: flex;
+    align-items: start;
+    height: fit-content;
+}
+.projectProgressBar{
+    width: 100%;
+    height: 5px;
+
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: initial;
+    border-radius: 10px;
+    background-color: rgb(194, 194, 194);
+    border: none;
+    
+}
+                                                    progress::-moz-progress-bar {
+                                                    background-color: red;
+                                                    }
+/* WebKit (Chrome, Safari) */
+progress::-webkit-progress-bar {
+  background-color: rgb(194, 194, 194);
+}
+                                                    progress::-webkit-progress-value {
+                                                    background-color: red;
+                                                    }
+.projectDueDate{
+    grid-area: dueDate;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+}
+.projectDueDate>p{
+    font-family: gobold;
+    font-size: 15px;
+}
+.projectDueDate>.date{
+    font-family: gobold_light;
+    font-size: 13px;
+}
+
+
+@media (768px < width < 1024px){
+    .sidebar{
+        gap: 20px;
+        padding: 20px;
+    }
+    .home{
+        font-size: 40px;
+    }
+    .sbProjects>p{
+        font-size: 28px;
+    }
+    .sdProjectList{
+        font-size: 17px;
+        margin-left: 7px;
+    }
+    .sdProjectList>li{
+        margin: 5px;
+    }
+    .user{
+        gap: 7px;
+        justify-content: start;
+    }
+    .userPic{
+        width: 55px;
+    }
+    .userName{
+        font-size: 15px;
+    }
+
+    .content{
+        padding: 20px;
+        gap: 10px;
+    }
+
+    /* MAINPAGE */
+    #mainPage header h1{
+        font-size: 55px;
+    }
+    #mainPage header>h3{
+        font-size: 25px;
+    }
+    #mainPage header>.newTask{
+        gap: 5px;
+    }
+    #mainPage header>.newTask>div{
+        height: 55px;
+        font-size: 35px;
+    }
+    #mainPage header>.newTask>p{
+        font-size: 15px;
+    }
+
+    /* MAINPAGE AND SELECTED PROJECT PAGE */
+    main{
+        padding-top: 15px;
+    }
+    main>div{
+        padding: 12px 12px 22px 12px;
+        border-radius: 15px;
+    }   
+    main>div>p{
+        font-size: 23px;
+    }
+    .list{
+        gap: 7px;
+    }
+    .card{
+        border-radius: 15px;
+    }
+    .cardTitle{
+        font-size: 16px;
+        padding: 15px 10px;
+    }
+
+
+    /* ALL PROJECTS PAGE */
+    #projectsPage header{
+        padding-bottom: 15px;
+    }
+    #projectsPage header h1{
+        font-size: 55px;
+    }
+    #projectsPage header>.newProject{
+        gap: 5px;
+    }
+    #projectsPage header>.newProject>div{
+        height: 55px;
+        font-size: 32px;
+    }
+    #projectsPage header>.newProject>p{
+        font-size: 15px;
+    }
+    .allProjects{
+        gap: 15px;
+    }
+    .projectCard{
+        border-radius: 10px;
+    }
+    .projectTitle{
+        font-size: 17px;
+        padding: 15px;
+    }
+    .progressBar{
+        border-radius: 15px;
+    }
+
+
+    /* SELECTED PROJECT PAGE */
+    #selectedProjectPage header{
+        padding-bottom: 15px;
+    }
+    #selectedProjectPage header h1{
+        font-size: 55px;
+    }
+    #selectedProjectPage header .editProject{
+        font-size: 20px;
+    }
+    #selectedProjectPage header>.newProjectTask{
+        gap: 5px;
+    }
+    #selectedProjectPage header>.newProjectTask>div{
+        height: 65px;
+        font-size: 35px;
+    }
+    #selectedProjectPage header>.newProjectTask>p{
+        font-size: 20px;
+    }
+    .projectProgressBar{
+        height: 8px;        
+    }
+    .projectDueDate{
+        gap: 15px;
+    }
+    .projectDueDate>p{
+        font-size: 18px;
+    }
+    .projectDueDate>.date{
+        font-size: 17px;
+    }
+}
+@media (width >= 1024px){
+    .home{
+        font-size: 45px;
+    }
+    .sbProjects>p{
+        font-size: 32px;
+    }
+    .sdProjectList{
+        font-size: 18px;
+        margin-left: 8px;
+    }
+    .sdProjectList>li{
+        margin: 6px;
+    }
+    .user{
+        gap: 10px;
+        justify-content: start;
+    }
+    .userPic{
+        width: 60px;
+    }
+    .userName{
+        font-size: 18px;
+    }
+
+
+    /* MAINPAGE */
+    #mainPage header h1{
+        font-size: 65px;
+    }
+    #mainPage header>h3{
+        font-size: 28px;
+    }
+    #mainPage header>.newTask>div{
+        height: 65px;
+        font-size: 40px;
+    }
+    #mainPage header>.newTask>p{
+        font-size: 20px;
+    }
+
+    /* MAINPAGE AND SELECTED PROJECT PAGE */
+    main{
+        padding-top: 20px;
+    }
+    main>div>p{
+        font-size: 26px;
+    }
+    .cardTitle{
+        font-size: 17px;
+    }
+
+
+    /* ALL PROJECTS PAGE */
+    #projectsPage header{
+        padding-bottom: 15px;
+    }
+    #projectsPage header h1{
+        font-size: 60px;
+    }
+    #projectsPage header>.newProject>div{
+        height: 60px;
+        font-size: 35px;
+    }
+    #projectsPage header>.newProject>p{
+        font-size: 19px;
+    }
+    .projectTitle{
+        font-size: 19px;
+    }
+
+
+    /* SELECTED PROJECT PAGE */
+    #selectedProjectPage header{
+        padding-bottom: 20px;
+    }
+    #selectedProjectPage header h1{
+        font-size: 60px;
+    }
+    #selectedProjectPage header .editProject{
+        font-size: 25px;
+    }
+    #selectedProjectPage header>.newProjectTask>div{
+        height: 70px;
+        font-size: 40px;
+    }
+    #selectedProjectPage header>.newProjectTask>p{
+        font-size: 22px;
+    }
+    .projectProgressBar{
+        height: 10px;        
+    }
+    .projectDueDate{
+        gap: 20px;
+    }
+    .projectDueDate>p{
+        font-family: gobold;
+        font-size: 23px;
+    }
+    .projectDueDate>.date{
+        font-family: gobold_light;
+        font-size: 20px;
+    }
+}
+
+/* ALL MODALS */
+.modal{
+    width: 500px;
+    height: fit-content;
+    max-height: 80%;
+    min-width: 480px;
+    position: absolute;
+    left: 50%;
+    top: 50%; 
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    background-color: rgba(0, 6, 22, 0.9);
+    border: 3px solid rgba(0, 68, 255, 0.05);
+    box-shadow: 0 0 20px 10px rgb(0, 10, 39);
+    border-radius: 20px;
+    
+}
+.modal:not([open]) {
+  display: none;
+}
+
+/* ADD NEW TASK AND NEW PROJECT MODAL */
+.add.modal>fieldset{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 20px;
+    justify-content: center;
+    gap: 10px;
+}
+.add.modal legend{
+    width: 100%;
+    font-family: gobold_bold;
+    font-size: 25px;
+    text-align: center;
+}
+.add.modal fieldset>div{
+    display: flex;
+    gap: 15px;
+}
+.add.modal label{
+    width: fit-content;
+    font-family: gobold_thin;
+    font-size: 18px;
+    text-wrap: nowrap;
+}
+.add.modal input, 
+.add.modal select,
+.add.modal textarea{
+    width: 100%;
+    padding: 0 5px;
+    font-family: roboto;
+    font-size: 15px;
+    color: black;
+    border-radius: 8px;
+}
+.add.modal option{
+    font-family: sans-serif;
+    font-size: 15px;
+    color: black;
+    background-color: white;
+}
+.add.modal .buttons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+button{
+    font-family: gobold;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+button[type="reset"]{
+    background-color: rgb(180, 180, 180);
+    border: 3px solid rgb(153, 153, 153);
+    outline: 2px solid rgb(82, 82, 82);
+    color: black;
+    text-shadow: 0 0 10px rgb(255, 255, 255);
+}
+button[type="submit"]{
+    background-color: rgb(0, 89, 255);
+    border: 3px solid rgb(9, 93, 250);
+    outline: 2px solid rgb(2, 46, 128);
+    color: rgb(214, 214, 214);
+    text-shadow: 
+        0 0 5px rgb(0, 2, 5),
+        0 0 10px rgb(0, 2, 5);
+    
+}
+button[type="reset"]:hover{
+    background-color: rgb(66, 66, 66);
+    border: 3px solid rgb(83, 83, 83);
+    outline: 2px solid rgb(116, 116, 116);
+    font-weight: bold;
+    color: white;
+    text-shadow: 
+        0 0 5px rgb(0, 2, 5),
+        0 0 10px rgb(0, 2, 5);
+}
+button[type="submit"]:hover{
+    background-color: rgb(0, 12, 179);
+    border: 3px solid rgb(0, 13, 202);
+    outline: 2px solid rgb(0, 15, 218);
+    font-weight: bold;
+    color: white;
+    text-shadow: 
+        0 0 5px rgb(1, 18, 255),
+        0 0 10px rgb(0, 17, 255);
+}
+
+/* TASK INFO MODAL*/
+#infoTaskModal>.infoContent{
+    display: grid;
+    grid-template: auto auto auto auto 1fr/ 2fr 1fr 1fr;
+    grid-template-areas: 
+    "infoTitle infoTitle infoTitle"
+    "infoProject infoProject infoPriority"
+    "infoStatus infoStatus infoPriority"
+    "infoDate infoDate infoPriority"
+    "infoDescription infoNotes infoNotes";
+    padding: 10px;
+    height: 100%;
+}
+
+/* TASK INFO AND PROJECT INFO MODALS */
+.info.modal .infoTitle{
+    grid-area: infoTitle;
+    width: 100%;
+}
+.info.modal .infoTitle>h1{
+    width: fit-content;
+    font-family: gobold_bold;
+    font-size: 40px;
+    text-shadow:
+    0 0 7px rgb(254, 254, 255),
+    0 0 10px rgb(62, 122, 241),
+    0 0 21px rgb(38, 83, 180),
+    0 0 42px rgb(15, 36, 83);
+    padding: 2px 10px 2px 5px;
+}
+.info.modal .infoProject{
+    grid-area: infoProject;
+}
+.info.modal .infoProject>p{
+    width: fit-content;
+    font-family: gobold_uplow;
+    font-size: 20px;
+    text-shadow:
+    0 0 7px rgb(146, 146, 255),
+    0 0 10px rgb(74, 74, 155),
+    0 0 21px rgb(27, 27, 117);
+    padding: 2px 10px 2px 5px;
+}
+.infoStatus{
+    grid-area:  infoStatus;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.info.modal .infoDate{
+    grid-area:  infoDate;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.info.modal .infoPriority{
+    grid-area: infoPriority;
+    display: grid;
+    grid-template-rows: 50% 25% 25%;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    background-color: rgba(0, 6, 22, 0.6);
+    border-radius: 10px;
+}
+.infoPriority>svg{
+    height: 100%;
+}
+.info.modal .infoPriority>.infoData{
+    margin: 0 4px 0;
+    padding: 1px 5px;
+    background-color: transparent;
+}
+.info.modal .infoDescription{
+    grid-area: infoDescription;
+}
+.info.modal .infoNote{
+    grid-area: infoNotes;
+}
+.info.modal .infoLabel{
+    font-family: gobold_thin;
+    font-size: 18px;
+    text-shadow:
+    0 0 7px rgb(0, 0, 184),
+    0 0 10px rgb(0, 0, 109),
+    0 0 21px rgb(0, 0, 100);
+    text-wrap: nowrap;
+}
+.info.modal .infoData{
+    font-family: roboto;
+    font-size: 15px;
+    background-color: rgba(0, 6, 22, 0.6);
+    border-radius: 10px;
+    height: fit-content;
+    padding: 10px;
+}
+.infoTitle>h1:hover,
+.infoProject>p:hover,
+.infoData:hover{
+    cursor: url(https://cur.cursors-4u.net/cursors/cur-7/cur609.cur), auto;
+    box-shadow: 0 0 10px 2px rgb(56, 56, 56);
+    border-radius: 10px;
+}
+
+/* INFO MODALS WITH EDITS */
+.editInfo.infoTitle{
+    grid-area: infoTitle;
+    width: 100%;
+}
+.editInfo.infoTitle>input{
+    width: 100%;
+    font-family: gobold_bold;
+    font-size: 40px;
+    padding: 2px 10px 2px 5px;
+    border-radius: 10px;
+    color: rgb(0, 0, 78);
+}
+.editInfo.infoProject{
+    grid-area: infoProject;
+}
+.editInfo.infoProject>select{
+    width: fit-content;
+    font-family: gobold_uplow;
+    color: rgb(0, 0, 78);
+    font-size: 20px;
+    padding: 2px 10px 2px 5px;
+}
+.editInfo.infoProject>select>option{
+    font-family: sans-serif;
+    font-size: 18px;
+    color: black;
+    background-color: white;
+}
+.editInfo input, 
+.editInfo select,
+.editInfo textarea{
+    width: 100%;
+    padding: 0 5px;
+    font-family: roboto;
+    font-size: 15px;
+    color: black;
+    border-radius: 8px;
+}
+.editInfo option{
+    font-family: sans-serif;
+    font-size: 15px;
+    color: black;
+    background-color: white;
+}
+.editInfo.infoDate input{
+    margin: 15px 5px;
+}
+.editInfo.infoPriority select{
+    height: fit-content;
+    margin-bottom: -20px;
+    padding: 0 5px;
+}
+.editInfo textarea{
+    height: 80%;
+    margin-top: 5px;
+}
+
+/* PROJECT INFO MODAL */
+#infoProjectModal>.infoContent{
+    display: grid;
+    grid-template: auto auto auto 1fr/ 2fr 1fr 1fr;
+    grid-template-areas: 
+    "infoTitle infoTitle infoTitle"
+    "infoProgress infoProgress infoPriority"
+    "infoDate infoDate infoPriority"
+    "infoDescription infoNotes infoNotes";
+    padding: 10px;
+    height: 100%;
+}
+#infoProjectModal .infoProgress{
+    grid-area: infoProgress;
+    display: grid;
+    grid-template: auto 1fr/ 35% 35% 30%;
+    gap: 5px;
+}
+.infoProgressBar{
+    grid-area: 1/1/2/3;
+    width: 100%;
+    height: 12px;
+
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: initial;
+    border-radius: 5px;
+    background-color: rgb(194, 194, 194);
+    border: none;
+}
+#infoProjectModal .infoProgress .infoLabel{
+    font-size: 15px;
+    text-shadow:
+    0 0 7px rgb(2, 2, 199),
+    0 0 10px rgb(2, 2, 163),
+    0 0 21px rgb(2, 2, 155);
+}
+#infoProjectModal .infoProgress .infoData{
+    font-family: gobold_light;
+    font-size: 18px;
+    background-color: transparent;
+    border-radius: 0;
+    height: fit-content;
+    width: fit-content;
+    padding: 0;
+}
+#infoProjectModal .infoProgress .infoProgressPercentage{
+    grid-area: 1/3/3/4;
+    font-size: 30px;
+    align-self: center;
+    justify-self: center;
+}
+.infoTotalTasks{
+    grid-area: 2/1/3/2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.infoDoneTasks{
+    grid-area: 2/2/3/3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (768px < width < 1024px){
+    .modal{
+        width: 70%;
+        max-width: 570px;
+        max-height: 90%;
+        padding: 20px;
+        border-radius: 30px;
+    }
+    .add.modal legend{
+        font-size: 30px;
+    }
+    .add.modal fieldset>div{
+        gap: 20px;
+    }
+    .add.modal label{
+        font-size: 21px;
+    }
+    .add.modal input, 
+    .add.modal select,
+    .add.modal textarea{
+        padding: 0 8px;
+        font-size: 17px;
+        border-radius: 10px;
+    }
+    .add.modal option{
+        font-size: 16px;
+    }
+
+    .add.modal .buttons{
+        gap: 30px;
+    }
+    button{
+        font-size: 20px;
+        padding: 10px 25px;
+        margin-top: 20px;
+        border-radius: 15px;
+    }
+
+    .info.modal .infoTitle>h1{
+        font-size: 45px;
+    }
+    .info.modal .infoProject>p{
+        font-size: 25px;
+    }
+    .info.modal .infoDate{
+        gap: 15px;
+    }
+    .info.modal .infoPriority>.infoData{
+        padding: 0 0 2px 0;
+    }
+    .info.modal .infoLabel{
+        font-size: 20px;
+    }
+    .info.modal .infoData{
+        font-size: 17px;
+    }
+
+
+    .editInfo.infoTitle>input{
+        font-size: 45px;
+    }
+    .editInfo.infoProject>select{
+        font-size: 25px;
+    }
+    .editInfo.infoProject>select>option{
+        font-size: 19px;
+    }
+    .editInfo input, 
+    .editInfo select,
+    .editInfo textarea{
+        font-size: 17px;
+    }
+    .editInfo option{
+        font-size: 16px;
+    }
+
+    #infoProjectModal .infoProgress .infoLabel{
+        font-size: 17px;
+    }
+    #infoProjectModal .infoProgress .infoData{
+        font-size: 20px;
+    }
+    #infoProjectModal .infoProgress .infoProgressPercentage{
+        font-size: 35px;
+    }
+    .infoTotalTasks{
+        gap: 9px;
+    }
+    .infoDoneTasks{
+        gap: 9px;
+    }
+}
+@media (width >= 1024px){
+    .modal{
+        width: 60%;
+        max-width: 750px;
+        min-height: 450px;
+        max-height: 90%;
+        border-radius: 35px;
+    }
+    .add.modal legend{
+        font-size: 35px;
+    }
+    .add.modal fieldset>div{
+        gap: 25px;
+    }
+    .add.modal label{
+        font-size: 25px;
+    }
+    .add.modal input, 
+    .add.modal select,
+    .add.modal textarea{
+        padding: 0 8px;
+        font-size: 18px;
+        border-radius: 12px;
+    }
+    .add.modal option{
+        font-size: 17px;
+    }
+
+    .add.modal .buttons{
+        gap: 35px;
+    }
+    button{
+        font-size: 23px;
+        padding: 15px 30px;
+        margin-top: 22px;
+        border-radius: 18px;
+    }
+
+    .info.modal .infoTitle>h1{
+        font-size: 50px;
+    }
+    .info.modal .infoProject>p{
+        font-size: 30px;
+    }
+    .info.modal .infoLabel{
+        font-size: 23px;
+    }
+    .info.modal .infoData{
+        font-size: 19px;
+    }
+
+    .editInfo.infoTitle>input{
+        font-size: 50px;
+    }
+    .editInfo.infoProject>select{
+        font-size: 30px;
+    }
+    .editInfo.infoProject>select>option{
+        font-size: 22px;
+    }
+    .editInfo input, 
+    .editInfo select,
+    .editInfo textarea{
+        font-size: 18px;
+    }
+    .editInfo option{
+        font-size: 17px;
+    }
+
+    #infoProjectModal .infoProgress .infoLabel{
+        font-size: 18px;
+    }
+    #infoProjectModal .infoProgress .infoData{
+        font-size: 21px;
+    }
+    #infoProjectModal .infoProgress .infoProgressPercentage{
+        font-size: 40px;
+    }
+}
+
