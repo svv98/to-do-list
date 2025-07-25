@@ -81,6 +81,8 @@ body{
 }
 .sbProjects{
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .sbProjects>p{
     font-family: gobold;
@@ -114,6 +116,11 @@ body{
     font-weight: bold;
     cursor: pointer;
     text-wrap: wrap;
+}
+.sbProjects .sbAddProject{
+    font-family: gobold_thin;
+    font-size: 14px;
+    margin-top: 2px;
 }
 .spacer{
     flex-grow: 1;
@@ -256,10 +263,9 @@ main>div>p{
     font-size: 14px;
     padding: 10px 5px;
 }
-                                                        .cardPriority{
-                                                            background-color: red;
-                                                            border-radius: 10px 0 0 10px;
-                                                        }
+.cardPriority{
+    border-radius: 10px 0 0 10px;
+}
 .card:hover{
     box-shadow: 3px 3px 10px 0 rgb(0, 0, 0);
     scale: 110%;
@@ -888,6 +894,8 @@ button[type="submit"]:hover{
 .info.modal .infoTitle{
     grid-area: infoTitle;
     width: 100%;
+    display: flex;
+    gap: 5px;
 }
 .info.modal .infoTitle>h1{
     width: fit-content;
@@ -898,10 +906,11 @@ button[type="submit"]:hover{
     0 0 10px rgb(62, 122, 241),
     0 0 21px rgb(38, 83, 180),
     0 0 42px rgb(15, 36, 83);
-    padding: 2px 10px 2px 5px;
+    padding: 2px 5px;
 }
 .info.modal .infoProject{
     grid-area: infoProject;
+    display: flex;
 }
 .info.modal .infoProject>p{
     width: fit-content;
@@ -925,7 +934,7 @@ button[type="submit"]:hover{
     align-items: center;
     gap: 10px;
 }
-.info.modal .infoPriority{
+#infoTaskModal .infoPriority{
     grid-area: infoPriority;
     display: grid;
     grid-template-rows: 50% 25% 25%;
@@ -939,15 +948,38 @@ button[type="submit"]:hover{
     height: 100%;
 }
 .info.modal .infoPriority>.infoData{
-    margin: 0 4px 0;
     padding: 1px 5px;
     background-color: transparent;
 }
 .info.modal .infoDescription{
     grid-area: infoDescription;
+    width: 100%;
+    display: grid;
+    grid-template: min-content auto / auto 20px;
+    grid-template-areas: 
+    "label label"
+    "data edit";
+}
+.info.modal .infoDescription>.infoData,
+.info.modal .infoNote>.infoData{
+    grid-area: data;
+}
+.info.modal .infoDescription>.infoLabel,
+.info.modal .infoNote>.infoLabel{
+    grid-area: label;
+}
+.info.modal .infoDescription>.editIcon,
+.info.modal .infoNote>.editIcon{
+    grid-area: edit;
 }
 .info.modal .infoNote{
     grid-area: infoNotes;
+    width: 100%;
+    display: grid;
+    grid-template: min-content auto / auto 20px;
+    grid-template-areas: 
+    "label label"
+    "data edit";
 }
 .info.modal .infoLabel{
     font-family: gobold_thin;
@@ -965,19 +997,33 @@ button[type="submit"]:hover{
     border-radius: 10px;
     height: fit-content;
     padding: 10px;
+    display: flex;
+    gap: 5px;
 }
-.infoTitle>h1:hover,
-.infoProject>p:hover,
-.infoData:hover{
-    cursor: url(https://cur.cursors-4u.net/cursors/cur-7/cur609.cur), auto;
-    box-shadow: 0 0 10px 2px rgb(56, 56, 56);
-    border-radius: 10px;
+.editIcon{
+    background-image: url(./media/edit.svg);
+    background-size: cover;
+    width: 18px;
+    height: 18px;
+    display: none;
+}
+.infoTitle:hover >.editIcon,
+.infoProject:hover >.editIcon,
+.infoData:hover >.editIcon,
+.infoDescription:hover >.editIcon,
+.info.modal .infoNote:hover >.editIcon{
+    display: inline;
+}
+.editIcon:hover{
+    cursor: pointer;
+    background-color: rgba(0, 47, 255, 0.2);
 }
 
 /* INFO MODALS WITH EDITS */
 .editInfo.infoTitle{
     grid-area: infoTitle;
     width: 100%;
+    margin-bottom: 5px;
 }
 .editInfo.infoTitle>input{
     width: 100%;
@@ -1038,8 +1084,8 @@ button[type="submit"]:hover{
     grid-template: auto auto auto 1fr/ 2fr 1fr 1fr;
     grid-template-areas: 
     "infoTitle infoTitle infoTitle"
-    "infoProgress infoProgress infoPriority"
-    "infoDate infoDate infoPriority"
+    "infoProgress infoProgress infoProjectPriority"
+    "infoDate infoDate infoProjectPriority"
     "infoDescription infoNotes infoNotes";
     padding: 10px;
     height: 100%;
@@ -1047,23 +1093,26 @@ button[type="submit"]:hover{
 #infoProjectModal .infoProgress{
     grid-area: infoProgress;
     display: grid;
-    grid-template: auto 1fr/ 35% 35% 30%;
+    grid-template: min-content auto / 50% 35% 15%;
+    grid-template-areas: 
+    "infoProgressBar infoProgressBar infoProgressPercentage"
+    "infoTotalTasks infoDoneTasks infoDoneTasks";
     gap: 5px;
 }
 .infoProgressBar{
-    grid-area: 1/1/2/3;
+    grid-area: infoProgressBar;
     width: 100%;
-    height: 12px;
+    height: 20px;
 
     -webkit-appearance: none;
     appearance: none;
     cursor: initial;
-    border-radius: 5px;
-    background-color: rgb(194, 194, 194);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.425);
     border: none;
 }
 #infoProjectModal .infoProgress .infoLabel{
-    font-size: 15px;
+    font-size: 12px;
     text-shadow:
     0 0 7px rgb(2, 2, 199),
     0 0 10px rgb(2, 2, 163),
@@ -1071,7 +1120,7 @@ button[type="submit"]:hover{
 }
 #infoProjectModal .infoProgress .infoData{
     font-family: gobold_light;
-    font-size: 18px;
+    font-size: 13px;
     background-color: transparent;
     border-radius: 0;
     height: fit-content;
@@ -1079,22 +1128,57 @@ button[type="submit"]:hover{
     padding: 0;
 }
 #infoProjectModal .infoProgress .infoProgressPercentage{
-    grid-area: 1/3/3/4;
-    font-size: 30px;
-    align-self: center;
-    justify-self: center;
+    grid-area: infoProgressPercentage;
+    font-size: 15px;
+    height: fit-content;
 }
 .infoTotalTasks{
-    grid-area: 2/1/3/2;
+    grid-area: infoTotalTasks;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 .infoDoneTasks{
-    grid-area: 2/2/3/3;
+    grid-area: infoDoneTasks;
     display: flex;
     align-items: center;
     gap: 10px;
+}
+#infoProjectModal .infoPriority{
+    grid-area: infoProjectPriority;
+    display: grid;
+    grid-template: 40% 30% 30% / auto 20px;
+    grid-template-areas: 
+    "infoProjectSVG infoProjectSVG"
+    "infoProjectData infoProjectData"
+    "infoProjectLabel infoProjectLabel";
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    background-color: rgba(0, 6, 22, 0.6);
+    border-radius: 10px;
+}
+#infoProjectModal .infoPriority>svg{
+    grid-area: infoProjectSVG;
+}
+#infoProjectModal .infoPriority>.infoData{
+    grid-area: infoProjectData;
+}
+#infoProjectModal .infoPriority>.editIcon{
+    grid-area: infoProjectEdit;
+}
+#infoProjectModal .infoPriority>.infoLabel{
+    grid-area: infoProjectLabel;
+}
+#infoProjectModal .infoPriority:hover{
+    grid-template-areas: 
+    "infoProjectSVG infoProjectSVG"
+    "infoProjectData infoProjectEdit"
+    "infoProjectLabel infoProjectLabel";
+}
+#infoProjectModal .infoDate:hover >.editIcon,
+#infoProjectModal .infoPriority:hover >.editIcon{
+    display: inline;
 }
 
 @media (768px < width < 1024px){
@@ -1174,13 +1258,13 @@ button[type="submit"]:hover{
     }
 
     #infoProjectModal .infoProgress .infoLabel{
-        font-size: 17px;
+        font-size: 13px;
     }
     #infoProjectModal .infoProgress .infoData{
-        font-size: 20px;
+        font-size: 15px;
     }
     #infoProjectModal .infoProgress .infoProgressPercentage{
-        font-size: 35px;
+        font-size: 15px;
     }
     .infoTotalTasks{
         gap: 9px;
@@ -1259,13 +1343,16 @@ button[type="submit"]:hover{
     }
 
     #infoProjectModal .infoProgress .infoLabel{
-        font-size: 18px;
+        font-size: 15px;
     }
     #infoProjectModal .infoProgress .infoData{
-        font-size: 21px;
+        font-size: 18px;
     }
     #infoProjectModal .infoProgress .infoProgressPercentage{
-        font-size: 40px;
+        font-size: 18px;
     }
 }
 
+.hide{
+    display: none !important;
+}

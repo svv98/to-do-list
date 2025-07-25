@@ -1,60 +1,13 @@
 import "./style.css";
 
-// let dragged;
+const pages = (function(){
+    
+    const mainPage = document.querySelector('#mainPage');
+    const projectsPage = document.querySelector('#projectsPage');
+    const selectedProjectPage = document.querySelector('#selectedProjectPage');
 
-// /* events fired on the draggable target */
-// const source = document.querySelector(".card1");
-// source.addEventListener("drag", (event) => {
-//   console.log("dragging");
-// });
-
-// source.addEventListener("dragstart", (event) => {
-//   // store a ref. on the dragged elem
-//   dragged = event.target;
-//   // make it half transparent
-//   event.target.classList.add("dragging");
-// });
-
-// source.addEventListener("dragend", (event) => {
-//   // reset the transparency
-//   event.target.classList.remove("dragging");
-// });
-
-// /* events fired on the drop targets */
-// const target = document.querySelector(".doing");
-// target.addEventListener(
-//   "dragover",
-//   (event) => {
-//     // prevent default to allow drop
-//     event.preventDefault();
-//   },
-//   false,
-// );
-
-// target.addEventListener("dragenter", (event) => {
-//   // highlight potential drop target when the draggable element enters it
-//   if (event.target.classList.contains("dropzone")) {
-//     event.target.classList.add("dragover");
-//   }
-// });
-
-// target.addEventListener("dragleave", (event) => {
-//   // reset background of potential drop target when the draggable element leaves it
-//   if (event.target.classList.contains("dropzone")) {
-//     event.target.classList.remove("dragover");
-//   }
-// });
-
-// target.addEventListener("drop", (event) => {
-//   // prevent default action (open as link for some elements)
-//   event.preventDefault();
-//   // move dragged element to the selected drop target
-//   if (event.target.classList.contains("dropzone")) {
-//     event.target.classList.remove("dragover");
-//     event.target.appendChild(dragged);
-//   }
-// });
-
+    return {mainPage, projectsPage, selectedProjectPage}
+})();
 const addTaskVariables = (function(){
     
     const addTaskModal = document.querySelector('#addTaskModal');
@@ -63,7 +16,6 @@ const addTaskVariables = (function(){
 
     return {addTaskModal, addTaskCANCEL, addTaskSUBMIT}
 })();
-
 const addProjectVariables = (function(){
     
     const addProjectModal = document.querySelector('#addProjectModal');
@@ -72,7 +24,6 @@ const addProjectVariables = (function(){
 
     return {addProjectModal, addProjectCANCEL, addProjectSUBMIT}
 })();
-
 const infoTaskVariables = (function(){
     
     const infoTaskModal = document.querySelector('#infoTaskModal');
@@ -81,7 +32,6 @@ const infoTaskVariables = (function(){
 
     return {infoTaskModal, infoTaskCANCEL, infoTaskSUBMIT}
 })();
-
 const infoProjectVariables = (function(){
 
     const infoProjectModal = document.querySelector('#infoProjectModal');
@@ -91,83 +41,220 @@ const infoProjectVariables = (function(){
     return {infoProjectModal, infoProjectCANCEL, infoProjectSUBMIT}
 })();
 
+let tasks = [ ];
+let projects = [ ];
+let currentPage = 'home';
 
-/* const mainPageVariables = (function(){
+class NewTask{
+    constructor(title, project, description, date, priority){
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.project = project;
+        this.description = description;
+        this.date = date;
+        this.priority = priority;
+        this.status = "todo";
+        this.added = false;
+    }
+    add(task){
+        tasks.push(task);
+        addToDOM().taskDOM();
+    }
+}
+class NewProject{
+    constructor(title, description, date, priority){
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.priority = priority;
+        this.added = false;
+        this.tasks = {
+            toDo: [ ],
+            doing: [ ],
+            done: [ ],
+        };
+    }
+    add(project){
+        projects.push(project);
+        // addToDOM().taskDOM();
+    }
+}
+
+let task1 = new NewTask('task1', undefined, 'task1Description', '2025-08-10', 'low');
+task1.add(Object.assign({}, task1));
+
+let task2 = new NewTask('task2', undefined, 'task2Description', '2025-08-10', 'low');
+task2.add(Object.assign({}, task2));
+
+// let project1 = new NewProject('project1', 'project1Description', '2025-08-10', 'imp');
+// project1.add(Object.assign({}, project1));
+// console.log(project1);
+
+const sidebar = (function(){
+    mainPageEvents();
+    const homeButton = document.querySelector(".home");
+    const projectsButton = document.querySelector(".sbProjects");
+    const addProjectButton = document.querySelector(".sbAddProject");
+
+    homeButton.addEventListener('click',()=>{
+        if(currentPage!=='home'){
+            pages.projectsPage.classList.add('hide');
+            pages.selectedProjectPage.classList.add('hide');
+            pages.mainPage.classList.remove('hide');
+
+            for(let task of tasks){
+                task.added=false;
+            }
+            addToDOM().taskDOM();
+            currentPage='home';
+        }
+    });
+    projectsButton.addEventListener('click',()=>{
+        pages.mainPage.classList.add('hide');
+        pages.selectedProjectPage.classList.add('hide');
+        pages.projectsPage.classList.remove('hide');
+        projectsPageEvents();
+        currentPage='projects';
+    });
+})();
+function mainPageEvents(){
     
     const newTask = document.querySelector('.newTask');
     const allTasks = document.querySelector('main');
 
-    return {newTask, allTasks}
-})();
-
-mainPageVariables.newTask.addEventListener('click', ()=>{
-    addTaskVariables.addTaskModal.showModal();
-});
-addTaskVariables.addTaskCANCEL.addEventListener('click', ()=>{
-    addTaskVariables.addTaskModal.close();
-});
-
-mainPageVariables.allTasks.addEventListener('click', (event)=>{
-    if(event.target.closest("article")){
-        infoTaskVariables.infoTaskModal.showModal();
-    }
-    infoTaskVariables.infoTaskModal.addEventListener('click', (event)=>{
-        if(event.target.closest(".infoContent")){}
-        else infoTaskVariables.infoTaskModal.close();
+    newTask.addEventListener('click', ()=>{
+        addTaskVariables.addTaskModal.showModal();
     });
-}); */
-
-/* const projectsPageVariables = (function(){
+    addTaskVariables.addTaskCANCEL.addEventListener('click', ()=>{
+        addTaskVariables.addTaskModal.close();
+    });
+    allTasks.addEventListener('click', (event)=>{
+        if(event.target.closest("article")){
+            infoTaskVariables.infoTaskModal.showModal();
+        }
+        infoTaskVariables.infoTaskModal.addEventListener('click', (event)=>{
+            if(event.target.closest(".infoContent")){}
+            else infoTaskVariables.infoTaskModal.close();
+        });
+    });
+    
+};
+function projectsPageEvents(){
     
     const newProject = document.querySelector('.newProject');
     const allProjects = document.querySelector('.allProjects');
 
-    return {newProject, allProjects}
-})();
-
-projectsPageVariables.newProject.addEventListener('click', ()=>{
-    addProjectVariables.addProjectModal.showModal();
-});
-addProjectVariables.addProjectCANCEL.addEventListener('click', ()=>{
-    addProjectVariables.addProjectModal.close();
-});
-
-projectsPageVariables.allProjects.addEventListener('click', (event)=>{
-        if(event.target.closest(".projectCard")){
-            console.log('hola');
-        }
-}); */
-
-const selectedProjectPageVariables = (function(){
+    newProject.addEventListener('click', ()=>{
+        addProjectVariables.addProjectModal.showModal();
+    });
+    addProjectVariables.addProjectCANCEL.addEventListener('click', ()=>{
+        addProjectVariables.addProjectModal.close();
+    });
+    allProjects.addEventListener('click', (event)=>{
+            if(event.target.closest(".projectCard")){
+                console.log('hola');
+            }
+    });
+};
+function selectedProjectPageEvents(){
     
     const newProjectTask = document.querySelector('.newProjectTask');
     const projectMain = document.querySelector('#selectedProjectPage>main');
     const projectTitle = document.querySelector('.headerTitle');
 
-    return {newProjectTask, projectMain, projectTitle}
-})();
+    newProjectTask.addEventListener('click', ()=>{
+        addTaskVariables.addTaskModal.showModal();
+    });
+    addTaskVariables.addTaskCANCEL.addEventListener('click', ()=>{
+        addTaskVariables.addTaskModal.close();
+    });
+    projectMain.addEventListener('click', (event)=>{
+        if(event.target.closest("article")){
+            infoTaskVariables.infoTaskModal.showModal();
+        }
+        infoTaskVariables.infoTaskModal.addEventListener('click', (event)=>{
+            if(event.target.closest(".infoContent")){}
+            else infoTaskVariables.infoTaskModal.close();
+        });
+    });
+    projectTitle.addEventListener('click', (event)=>{
+        infoProjectVariables.infoProjectModal.showModal();
+        infoProjectVariables.infoProjectModal.addEventListener('click', (event)=>{
+            if(event.target.closest(".infoContent")){}
+            else infoProjectVariables.infoProjectModal.close();
+        });
+    });
+};
 
-selectedProjectPageVariables.newProjectTask.addEventListener('click', ()=>{
-    addTaskVariables.addTaskModal.showModal();
-});
-addTaskVariables.addTaskCANCEL.addEventListener('click', ()=>{
-    addTaskVariables.addTaskModal.close();
-});
+function addToDOM(){
+    let taskDOM = ()=>{
+        console.log('taskDOM');
+        for(let task of tasks){
+            if(task.added === false){
+                console.log(task);
+                task.added=true;
+                const card = document.createElement("article");
+                card.id = task.id;
+                card.classList.add("card");
 
-selectedProjectPageVariables.projectMain.addEventListener('click', (event)=>{
-    if(event.target.closest("article")){
-        infoTaskVariables.infoTaskModal.showModal();
+                const cardPriority = document.createElement("div");
+                cardPriority.classList.add("cardPriority");
+                cardPriority.style = `background-color: ${styleFunctions().priorityColor(task.priority)};`;
+                card.appendChild(cardPriority);
+
+                const cardTitle = document.createElement("p");
+                cardTitle.classList.add("cardTitle");
+                cardTitle.textContent = task.title;
+                card.appendChild(cardTitle);
+
+                let list = styleFunctions().column(task.status);
+                list.appendChild(card);
+            }
+        }
     }
-    infoTaskVariables.infoTaskModal.addEventListener('click', (event)=>{
-        if(event.target.closest(".infoContent")){}
-        else infoTaskVariables.infoTaskModal.close();
-    });
-});
 
-selectedProjectPageVariables.projectTitle.addEventListener('click', (event)=>{
-    infoProjectVariables.infoProjectModal.showModal();
-    infoProjectVariables.infoProjectModal.addEventListener('click', (event)=>{
-        if(event.target.closest(".infoContent")){}
-        else infoProjectVariables.infoProjectModal.close();
-    });
-});
+
+    return {taskDOM}
+}
+
+function styleFunctions(){
+    let column = (status)=>{
+        let list;
+        switch(status){
+            case 'todo':
+                list = document.querySelector('.todo.list');
+                break;
+            case 'doing':
+                list = document.querySelector('.doing.list');
+                break;
+            case 'done':
+                list = document.querySelector('.done.list');
+                break;
+        }
+        return list
+    };
+    let priorityColor = (priority)=>{
+        let color;
+        switch(priority){
+            case 'low':
+                color= 'green';
+                break;
+            case 'min':
+                color= 'yellowgreen';
+                break;
+            case 'mod':
+                color= 'yellow';
+                break;
+            case 'imp':
+                color= 'orangered';
+                break;
+            case 'vim':
+                color= 'red';
+                break;
+        }
+        return color
+    };
+    return{priorityColor, column}
+}
+selectedProjectPageEvents();

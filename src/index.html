@@ -11,11 +11,8 @@
             <div class="home">HOME</div>
             <div class="sbProjects">
                 <p title="Click to see ALL projects">PROJECTS</p>
-                <ul class="sdProjectList">
-                    <li>Daily Missions</li>
-                    <li> Keep This Town From Exploding</li>
-                    <li>Project 3</li>
-                </ul>
+                <ul class="sdProjectList"></ul>
+                <p class="sbAddProject">ADD PROJECT</p>
             </div>
             <div class="spacer"></div>
             <div class="user">
@@ -25,8 +22,7 @@
         </section>
 
         <section class="content">
-
-            <!-- <section id="mainPage">
+            <section id="mainPage">
                 <header>
                     <h1>WELCOME!</h1>
                     <h3>ALL TASKS</h3>
@@ -38,47 +34,20 @@
                 <main>
                     <div class="todo">
                         <p>TO DO</p>
-                        <div class="todo list">
-                            <article id="1" class="card card1" draggable="true">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Dodge Handbell Choir</p>
-                            </article>
-                            <article id="1" class="card">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Stop cult</p>
-                            </article>
-                            <article id="1" class="card">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Stop Kenny's stunt</p>
-                            </article>
-                        </div>
+                        <div class="todo list"></div>
                     </div>
-                    <div class="done">
+                    <div class="doing">
                         <p>DOING</p>
-                        <div class="doing list">
-                            <article id="1" class="card">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Talk to Stan</p>
-                            </article>
-                            <article id="1" class="card">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Squirrel Butters</p>
-                            </article>
-                        </div>
+                        <div class="doing list"></div>
                     </div>
                     <div class="done">
                         <p>DONE</p>
-                        <div class="done list">
-                            <article id="1" class="card">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Rescue Ike</p>
-                            </article>
-                        </div>
+                        <div class="done list "></div>
                     </div>
                 </main>
-            </section> -->
+            </section>
 
-            <!-- <section id="projectsPage">
+            <section id="projectsPage" class="hide">
                 <header>
                     <h1>PROJECTS</h3>
                     <div class="newProject">
@@ -109,9 +78,9 @@
                         </div>
                     </article>
                 </main>
-            </section> -->
+            </section>
 
-            <section id="selectedProjectPage">
+            <section id="selectedProjectPage" class="hide">
                 <header>
                     <div class="headerTitle">
                         <h1>PROJECT TITLE!</h1>
@@ -132,42 +101,15 @@
                 <main>
                     <div class="todo">
                         <p>TO DO</p>
-                        <div class="todo list">
-                            <article id="1" class="card card1" draggable="true">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Dodge Handbell Choir</p>
-                            </article>
-                            <article id="1" class="card">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Stop cult</p>
-                            </article>
-                            <article id="1" class="card">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Stop Kenny's stunt</p>
-                            </article>
-                        </div>
+                        <div class="todo list"></div>
                     </div>
-                    <div class="done">
+                    <div class="doing">
                         <p>DOING</p>
-                        <div class="doing list">
-                            <article id="1" class="card">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Talk to Stan</p>
-                            </article>
-                            <article id="1" class="card">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Squirrel Butters</p>
-                            </article>
-                        </div>
+                        <div class="doing list"></div>
                     </div>
                     <div class="done">
                         <p>DONE</p>
-                        <div class="done list">
-                            <article id="1" class="card">
-                                <div class="cardPriority"></div>
-                                <p class="cardTitle">Rescue Ike</p>
-                            </article>
-                        </div>
+                        <div class="done list"></div>
                     </div>
                 </main>
             </section>
@@ -186,10 +128,7 @@
             <div>
                 <label for="taskProject">Project</label>
                 <select id="taskProject" name="taskProject">
-                    <option value=""> </option>
-                    <option value="p1">Daily Missions</option>
-                    <option value="p2">Keep This Town From Exploding</option>
-                    <option value="p3">Project 3</option>
+                    <option></option>
                 </select>
             </div>
             <div>
@@ -255,11 +194,12 @@
     <dialog id="infoProjectModal" class="info modal">
         <div class="infoContent">
             <div class="infoTitle">
-                <h1>TASK TITLE</h1>                
-            </div>
+                <h1>PROJECT TITLE</h1>
+                <div class="editIcon" title="Click to edit"></div>                  
+            </div> 
             <div class="infoProgress">
                 <progress class="infoProgressBar" value="70" max="100"></progress> 
-                <div class="infoProgressPercentage infoLabel">70%</div>                
+                <div class="infoProgressPercentage infoLabel">100%</div>                
                 <div class="infoTotalTasks">
                     <div class="infoLabel">TOTAL TASKS:</div>
                     <div class="infoData">10</div>
@@ -272,6 +212,7 @@
             <div class="infoDate">
                 <p class="infoLabel">DUE DATE</p>
                 <p class="infoData">Wed 24/Dec/2025</p>
+                <div class="editIcon" title="Click to edit"></div> 
             </div>
             <div class="infoPriority">
                 <svg viewBox="0 0 24 24" fill="red" xmlns="http://www.w3.org/2000/svg">
@@ -282,10 +223,12 @@
                     </g>
                 </svg>
                 <p class="infoData">LOW</p>
-                <p class="infoLabel">PRIORITY</p>
+                <div class="editIcon" title="Click to edit"></div> 
+                <p class="infoLabel">PRIORITY</p>  
             </div>
             <div class="infoDescription">
                 <p class="infoLabel">DESCRIPTION</p>
+                <div class="editIcon" title="Click to edit"></div>
                 <p class="infoData">
                     Lorem ipsum dolor sit amet consectetur adipiscing elit. 
                     Consectetur adipiscing elit quisque faucibu.
@@ -294,6 +237,7 @@
             </div>
             <div class="infoNote">
                 <p class="infoLabel">NOTES</p>
+                <div class="editIcon" title="Click to edit"></div>
                 <p class="infoData">
                     Lorem ipsum dolor sit amet consectetur adipiscing elit. 
                     Consectetur adipiscing elit quisque faucibu.
@@ -306,18 +250,24 @@
     <dialog id="infoTaskModal" class="info modal">
         <div class="infoContent">
             <div class="infoTitle">
-                <h1>TASK TITLE</h1>                
+                <h1>TASK TITLE</h1>
+                <div class="editIcon" title="Click to edit"></div>                
             </div>
             <div class="infoProject">
                 <p>Project</p>
+                <div class="editIcon" title="Click to edit"></div>  
             </div>
             <div class="infoStatus">
                 <p class="infoLabel">TASK STATUS</p>
-                <p class="infoData">To Do</p>
+                <div class="infoData">To Do
+                    <div class="editIcon" title="Click to edit"></div> 
+                </div>
             </div>
             <div class="infoDate">
                 <p class="infoLabel">DUE DATE</p>
-                <p class="infoData">Wed 24/Dec/2025</p>
+                <div class="infoData">Wed 24/Dec/2025
+                    <div class="editIcon" title="Click to edit"></div> 
+                </div>
             </div>
             <div class="infoPriority">
                 <svg viewBox="0 0 24 24" fill="red" xmlns="http://www.w3.org/2000/svg">
@@ -327,24 +277,28 @@
                         <path d="M21.7605 15.92L15.3605 4.4C14.5005 2.85 13.3105 2 12.0005 2C10.6905 2 9.50047 2.85 8.64047 4.4L2.24047 15.92C1.43047 17.39 1.34047 18.8 1.99047 19.91C2.64047 21.02 3.92047 21.63 5.60047 21.63H18.4005C20.0805 21.63 21.3605 21.02 22.0105 19.91C22.6605 18.8 22.5705 17.38 21.7605 15.92ZM11.2505 9C11.2505 8.59 11.5905 8.25 12.0005 8.25C12.4105 8.25 12.7505 8.59 12.7505 9V14C12.7505 14.41 12.4105 14.75 12.0005 14.75C11.5905 14.75 11.2505 14.41 11.2505 14V9ZM12.7105 17.71C12.6605 17.75 12.6105 17.79 12.5605 17.83C12.5005 17.87 12.4405 17.9 12.3805 17.92C12.3205 17.95 12.2605 17.97 12.1905 17.98C12.1305 17.99 12.0605 18 12.0005 18C11.9405 18 11.8705 17.99 11.8005 17.98C11.7405 17.97 11.6805 17.95 11.6205 17.92C11.5605 17.9 11.5005 17.87 11.4405 17.83C11.3905 17.79 11.3405 17.75 11.2905 17.71C11.1105 17.52 11.0005 17.26 11.0005 17C11.0005 16.74 11.1105 16.48 11.2905 16.29C11.3405 16.25 11.3905 16.21 11.4405 16.17C11.5005 16.13 11.5605 16.1 11.6205 16.08C11.6805 16.05 11.7405 16.03 11.8005 16.02C11.9305 15.99 12.0705 15.99 12.1905 16.02C12.2605 16.03 12.3205 16.05 12.3805 16.08C12.4405 16.1 12.5005 16.13 12.5605 16.17C12.6105 16.21 12.6605 16.25 12.7105 16.29C12.8905 16.48 13.0005 16.74 13.0005 17C13.0005 17.26 12.8905 17.52 12.7105 17.71Z"></path> 
                     </g>
                 </svg>
-                <p class="infoData">LOW</p>
+                <div class="infoData">LOW
+                    <div class="editIcon" title="Click to edit"></div> 
+                </div>
                 <p class="infoLabel">PRIORITY</p>
             </div>
             <div class="infoDescription">
                 <p class="infoLabel">DESCRIPTION</p>
-                <p class="infoData">
+                <div class="editIcon" title="Click to edit"></div>
+                <div class="infoData">
                     Lorem ipsum dolor sit amet consectetur adipiscing elit. 
                     Consectetur adipiscing elit quisque faucibu.
-                    Lorem ipsum dolor sit amet consectetur adipiscing.
-                </p>
+                    Lorem ipsum dolor sit amet consectetur adipiscing. 
+                </div>
             </div>
             <div class="infoNote">
                 <p class="infoLabel">NOTES</p>
-                <p class="infoData">
+                <div class="editIcon" title="Click to edit"></div>
+                <div class="infoData">
                     Lorem ipsum dolor sit amet consectetur adipiscing elit. 
                     Consectetur adipiscing elit quisque faucibu.
-                    Lorem ipsum dolor sit amet consectetur adipiscing.
-                </p>
+                    Lorem ipsum dolor sit amet consectetur adipiscing. 
+                </div>
             </div>
         </div>
     </dialog>
