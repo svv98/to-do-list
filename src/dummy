@@ -189,3 +189,26 @@ PROJECT SELECT
 <option value="p1">Daily Missions</option>
 <option value="p2">Keep This Town From Exploding</option>
 <option value="p3">Project 3</option>
+
+
+<article class="projectCard">
+    <div class="projectPriority"></div>
+    <p class="projectTitle">Daily Missions</p>
+    <div class="progressDIV">
+        <progress class="progressBar" value="32" max="100"></progress> 
+    </div>
+</article>
+<article class="projectCard">
+    <div class="projectPriority"></div>
+    <p class="projectTitle">Keep This Town From Exploding</p>
+    <div class="progressDIV">
+        <progress class="progressBar" value="32" max="100"></progress> 
+    </div>
+</article>
+<article class="projectCard">
+    <div class="projectPriority"></div>
+    <p class="projectTitle">Project 3</p>
+    <div class="progressDIV">
+        <progress class="progressBar" value="32" max="100"></progress> 
+    </div>
+</article>

@@ -10,7 +10,7 @@
         <section class="sidebar">
             <div class="home">HOME</div>
             <div class="sbProjects">
-                <p title="Click to see ALL projects">PROJECTS</p>
+                <p title="Click to see ALL projects" class="sbProjectsButton">PROJECTS</p>
                 <ul class="sdProjectList"></ul>
                 <p class="sbAddProject">ADD PROJECT</p>
             </div>
@@ -55,29 +55,7 @@
                         <p>Add Project</p>
                     </div>
                 </header>
-                <main class="allProjects">
-                    <article class="projectCard">
-                        <div class="projectPriority"></div>
-                        <p class="projectTitle">Daily Missions</p>
-                        <div class="progressDIV">
-                            <progress class="progressBar" value="32" max="100"></progress> 
-                        </div>
-                    </article>
-                    <article class="projectCard">
-                        <div class="projectPriority"></div>
-                        <p class="projectTitle">Keep This Town From Exploding</p>
-                        <div class="progressDIV">
-                            <progress class="progressBar" value="32" max="100"></progress> 
-                        </div>
-                    </article>
-                    <article class="projectCard">
-                        <div class="projectPriority"></div>
-                        <p class="projectTitle">Project 3</p>
-                        <div class="progressDIV">
-                            <progress class="progressBar" value="32" max="100"></progress> 
-                        </div>
-                    </article>
-                </main>
+                <main class="allProjects"></main>
             </section>
 
             <section id="selectedProjectPage" class="hide">
@@ -118,77 +96,81 @@
     <div>
  
     <dialog id="addTaskModal" class="add modal">
-        <fieldset>
-            <legend>Add New Task</legend>
+        <form id="addTaskForm">
+            <fieldset>
+                <legend>Add New Task</legend>
 
-            <div>
-                <label for="taskTitle">Title</label>
-                <input type="text" id="taskTitle" name="taskTitle" value="test1">
-            </div>
-            <div>
-                <label for="taskProject">Project</label>
-                <select id="taskProject" name="taskProject">
-                    <option></option>
-                </select>
-            </div>
-            <div>
-                <label for="taskDescription">Description</label>
-                <textarea id="taskDescription" name="taskDescription" maxlength="150">test1</textarea>
-            </div>
-            <div>
-                <label for="taskDueDate">Due Date</label>
-                <input type="date" id="taskDueDate" name="taskDueDate" value="2025-07-23" min="2000-01-01" max="2100-12-31"/>
-            </div>
-            <div>
-                <label for="taskPriotity">Priority</label>
-                <select id="taskPriotity" name="taskPriotity">
-                    <option value="low">LOW</option>
-                    <option value="min">MINOR</option>
-                    <option value="mod">MODERATE</option>
-                    <option value="imp">IMPORTANT</option>
-                    <option value="vim">VERY IMPORTANT!</option>
-                </select>
-            </div>
+                <div>
+                    <label for="taskTitle">Title</label>
+                    <input type="text" id="taskTitle" name="taskTitle" value="test1">
+                </div>
+                <div>
+                    <label for="taskProject">Project</label>
+                    <select id="taskProject" name="taskProject">
+                        <option></option>
+                    </select>
+                </div>
+                <div>
+                    <label for="taskDescription">Description</label>
+                    <textarea id="taskDescription" name="taskDescription" maxlength="150">test1</textarea>
+                </div>
+                <div>
+                    <label for="taskDueDate">Due Date</label>
+                    <input type="date" id="taskDueDate" name="taskDueDate" value="2025-07-23" min="2000-01-01" max="2100-12-31"/>
+                </div>
+                <div>
+                    <label for="taskPriotity">Priority</label>
+                    <select id="taskPriotity" name="taskPriotity">
+                        <option value="low">LOW</option>
+                        <option value="min">MINOR</option>
+                        <option value="mod">MODERATE</option>
+                        <option value="imp">IMPORTANT</option>
+                        <option value="vim">VERY IMPORTANT!</option>
+                    </select>
+                </div>
 
-            <div class="buttons">
-                <button type="reset">Cancel</button>
-                <button type="submit">Add Task</button>
-            </div>
-        </fieldset>
+                <div class="buttons">
+                    <button type="reset">Cancel</button>
+                    <button type="submit">Add Task</button>
+                </div>
+            </fieldset>
+        </form>
     </dialog>
 
     <dialog id="addProjectModal" class="add modal">
-        <fieldset>
-            <legend>Add New Project</legend>
+        <form id="addProjectForm">
+            <fieldset>
+                <legend>Add New Project</legend>
 
-            <div>
-                <label for="projectTitle">Title</label>
-                <input type="text" id="projectTitle" name="projectTitle" value="test1">
-            </div>
-            <div>
-                <label for="projectDescription">Description</label>
-                <textarea id="projectDescription" name="projectDescription" maxlength="150">test1</textarea>
-            </div>
-            <div>
-                <label for="projectDueDate">Due Date</label>
-                <input type="date" id="projectDueDate" name="projectDueDate" value="2025-07-23" min="2000-01-01" max="2100-12-31"/>
-            </div>
-            <div>
-                <label for="projectPriotity">Priority</label>
-                <select id="projectPriotity" name="projectPriotity">
-                    <option value="low">LOW</option>
-                    <option value="min">MINOR</option>
-                    <option value="mod">MODERATE</option>
-                    <option value="imp">IMPORTANT</option>
-                    <option value="vim">VERY IMPORTANT!</option>
-                </select>
-            </div>
+                <div>
+                    <label for="projectTitle">Title</label>
+                    <input type="text" id="projectTitle" name="projectTitle" value="test1">
+                </div>
+                <div>
+                    <label for="projectDescription">Description</label>
+                    <textarea id="projectDescription" name="projectDescription" maxlength="150">test1</textarea>
+                </div>
+                <div>
+                    <label for="projectDueDate">Due Date</label>
+                    <input type="date" id="projectDueDate" name="projectDueDate" value="2025-07-23" min="2000-01-01" max="2100-12-31"/>
+                </div>
+                <div>
+                    <label for="projectPriotity">Priority</label>
+                    <select id="projectPriotity" name="projectPriotity">
+                        <option value="low">LOW</option>
+                        <option value="min">MINOR</option>
+                        <option value="mod">MODERATE</option>
+                        <option value="imp">IMPORTANT</option>
+                        <option value="vim">VERY IMPORTANT!</option>
+                    </select>
+                </div>
 
-            <div class="buttons">
-                <button type="reset">Cancel</button>
-                <button type="submit">Add Project</button>
-            </div>
-        </fieldset>
+                <div class="buttons">
+                    <button type="reset">Cancel</button>
+                    <button type="submit">Add Project</button>
+                </div>
+            </fieldset>
+        </form>
     </dialog>
 
     <dialog id="infoProjectModal" class="info modal">
