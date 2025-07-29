@@ -375,16 +375,12 @@ main>div>p{
     border-radius: 10px;
     background-color: rgb(194, 194, 194);
 }
-                                                    progress::-moz-progress-bar {
-                                                    background-color: red;
-                                                    }
+
 /* WebKit (Chrome, Safari) */
 .progressBar::-webkit-progress-bar {
   background-color: #eee;
 }
-                                                    .progressBar::-webkit-progress-value {
-                                                    background-color: red;
-                                                    }
+
 .projectCard:hover{
     box-shadow: 3px 3px 10px 0 rgb(0, 0, 0);
     scale: 105%;
@@ -879,13 +875,13 @@ button[type="submit"]:hover{
 /* TASK INFO MODAL*/
 #infoTaskModal>.infoContent{
     display: grid;
-    grid-template: auto auto auto auto 1fr/ 2fr 1fr 1fr;
+    grid-template: auto auto auto auto 1fr/ 3fr 2fr 1fr 50px;
     grid-template-areas: 
-    "infoTitle infoTitle infoTitle"
-    "infoProject infoProject infoPriority"
-    "infoStatus infoStatus infoPriority"
-    "infoDate infoDate infoPriority"
-    "infoDescription infoNotes infoNotes";
+    "infoTitle infoTitle infoTitle infoTitle"
+    "infoProject infoProject infoPriority infoPriority"
+    "infoStatus infoStatus infoPriority infoPriority"
+    "infoDate infoDate infoPriority infoPriority"
+    "infoDescription infoNotes infoNotes deleteTask";
     padding: 10px;
     height: 100%;
 }
@@ -950,6 +946,7 @@ button[type="submit"]:hover{
 .info.modal .infoPriority>.infoData{
     padding: 1px 5px;
     background-color: transparent;
+    text-align: center;
 }
 .info.modal .infoDescription{
     grid-area: infoDescription;
@@ -1018,6 +1015,34 @@ button[type="submit"]:hover{
     cursor: pointer;
     background-color: rgba(0, 47, 255, 0.2);
 }
+.deleteTaskDIV{
+    grid-area: deleteTask;
+    align-self: flex-end;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.deleteTask{
+    width: 70%;
+}
+.deleteTask path{
+    stroke: white;
+}
+.deleteTaskDIV:hover path{
+    stroke: red;
+    cursor: pointer;
+}
+.deleteTaskDIV .deleteText{
+    font-size: 12px;
+    font-family: gobold;
+    text-align: center;
+    opacity: 0;
+}
+.deleteTaskDIV:hover .deleteText{
+    opacity: 100%;
+    cursor: pointer;
+}
 
 /* INFO MODALS WITH EDITS */
 .editInfo.infoTitle{
@@ -1081,12 +1106,12 @@ button[type="submit"]:hover{
 /* PROJECT INFO MODAL */
 #infoProjectModal>.infoContent{
     display: grid;
-    grid-template: auto auto auto 1fr/ 2fr 1fr 1fr;
+    grid-template: auto auto auto 1fr/ 3fr 2fr 1fr 30px;
     grid-template-areas: 
-    "infoTitle infoTitle infoTitle"
-    "infoProgress infoProgress infoProjectPriority"
-    "infoDate infoDate infoProjectPriority"
-    "infoDescription infoNotes infoNotes";
+    "infoTitle infoTitle infoTitle infoTitle"
+    "infoProgress infoProgress infoProjectPriority infoProjectPriority"
+    "infoDate infoDate infoProjectPriority infoProjectPriority"
+    "infoDescription infoNotes infoNotes deleteProject";
     padding: 10px;
     height: 100%;
 }
@@ -1180,6 +1205,31 @@ button[type="submit"]:hover{
 #infoProjectModal .infoPriority:hover >.editIcon{
     display: inline;
 }
+.deleteProjectDIV{
+    grid-area: deleteProject;
+    align-self: flex-end;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.deleteProject path{
+    stroke: white;
+}
+.deleteProjectDIV:hover path{
+    stroke: red;
+    cursor: pointer;
+}
+.deleteProjectDIV .deleteText{
+    font-size: 10px;
+    font-family: gobold;
+    text-align: center;
+    opacity: 0;
+}
+.deleteProjectDIV:hover .deleteText{
+    opacity: 100%;
+    cursor: pointer;
+}
 
 @media (768px < width < 1024px){
     .modal{
@@ -1237,6 +1287,9 @@ button[type="submit"]:hover{
     .info.modal .infoData{
         font-size: 17px;
     }
+    .deleteTaskDIV .deleteText{
+        font-size: 15px;
+    }
 
 
     .editInfo.infoTitle>input{
@@ -1271,6 +1324,15 @@ button[type="submit"]:hover{
     }
     .infoDoneTasks{
         gap: 9px;
+    }
+    .deleteProject{
+        width: 35px;
+    }
+    .deleteProjectDIV .deleteText{
+        font-size: 15px;
+        font-family: gobold;
+        text-align: center;
+        opacity: 0;
     }
 }
 @media (width >= 1024px){
@@ -1323,6 +1385,9 @@ button[type="submit"]:hover{
     .info.modal .infoData{
         font-size: 19px;
     }
+    .deleteTaskDIV .deleteText{
+        font-size: 16px;
+    }
 
     .editInfo.infoTitle>input{
         font-size: 50px;
@@ -1350,6 +1415,12 @@ button[type="submit"]:hover{
     }
     #infoProjectModal .infoProgress .infoProgressPercentage{
         font-size: 18px;
+    }
+    .deleteProject{
+        width: 40px;
+    }
+    .deleteProjectDIV .deleteText{
+        font-size: 15px;
     }
 }
 
