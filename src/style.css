@@ -348,7 +348,7 @@ main>div>p{
 }
 .projectPriority{
     grid-column: 1/2;
-    background-color: red;
+    background-color: rgb(131, 131, 131);
     border-radius: 10px 0 0 10px;
     height: 100%;
 }
@@ -960,6 +960,7 @@ button[type="submit"]:hover{
 .info.modal .infoDescription>.infoData,
 .info.modal .infoNote>.infoData{
     grid-area: data;
+    text-wrap: wrap;
 }
 .info.modal .infoDescription>.infoLabel,
 .info.modal .infoNote>.infoLabel{
@@ -1004,12 +1005,24 @@ button[type="submit"]:hover{
     height: 18px;
     display: none;
 }
+.infoPriority .editIcon{
+    background-image: url(./media/edit.svg);
+    background-size: cover;
+    width: 14px;
+    height: 14px;
+    display: none;
+}
 .infoTitle:hover >.editIcon,
-.infoProject:hover >.editIcon,
-.infoData:hover >.editIcon,
+.infoProject.editSelectedProject:hover >.editIcon,
+.infoStatus:hover .editIcon,
+.infoDate:hover .editIcon,
+.infoPriority:hover .editIcon,
 .infoDescription:hover >.editIcon,
 .info.modal .infoNote:hover >.editIcon{
     display: inline;
+}
+.infoProject.editProjectMain:hover{
+    cursor: pointer;
 }
 .editIcon:hover{
     cursor: pointer;
@@ -1050,7 +1063,7 @@ button[type="submit"]:hover{
     width: 100%;
     margin-bottom: 5px;
 }
-.editInfo.infoTitle>input{
+.editInfo.infoTitle input{
     width: 100%;
     font-family: gobold_bold;
     font-size: 40px;
@@ -1061,14 +1074,14 @@ button[type="submit"]:hover{
 .editInfo.infoProject{
     grid-area: infoProject;
 }
-.editInfo.infoProject>select{
+.editInfo.infoProject select{
     width: fit-content;
     font-family: gobold_uplow;
     color: rgb(0, 0, 78);
     font-size: 20px;
     padding: 2px 10px 2px 5px;
 }
-.editInfo.infoProject>select>option{
+.editInfo.infoProject select>option{
     font-family: sans-serif;
     font-size: 18px;
     color: black;
@@ -1191,6 +1204,7 @@ button[type="submit"]:hover{
 }
 #infoProjectModal .infoPriority>.editIcon{
     grid-area: infoProjectEdit;
+    align-self: baseline;
 }
 #infoProjectModal .infoPriority>.infoLabel{
     grid-area: infoProjectLabel;

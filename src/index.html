@@ -102,23 +102,23 @@
             <fieldset>
                 <legend>Add New Task</legend>
 
-                <div>
+                <div class="addTaskTitle">
                     <label for="taskTitle">Title</label>
-                    <input type="text" id="taskTitle" name="taskTitle" value="test1">
+                    <input type="text" id="taskTitle" name="taskTitle" placeholder="Task Title">
                 </div>
-                <div>
+                <div class="addTaskProject">
                     <label for="taskProject">Project</label>
                     <select id="taskProject" name="taskProject"></select>
                 </div>
-                <div>
+                <div class="addTaskDescription">
                     <label for="taskDescription">Description</label>
-                    <textarea id="taskDescription" name="taskDescription" maxlength="150">test1</textarea>
+                    <textarea id="taskDescription" name="taskDescription" maxlength="150" placeholder="Task Description"></textarea>
                 </div>
-                <div>
+                <div class="addTaskDueDate">
                     <label for="taskDueDate">Due Date</label>
-                    <input type="date" id="taskDueDate" name="taskDueDate" value="2025-07-23" min="2000-01-01" max="2100-12-31"/>
+                    <input type="date" id="taskDueDate" name="taskDueDate" min="2000-01-01" max="2100-12-31"/>
                 </div>
-                <div>
+                <div class="addTaskPriotity">
                     <label for="taskPriotity">Priority</label>
                     <select id="taskPriotity" name="taskPriotity">
                         <option value="low">LOW</option>
@@ -142,19 +142,19 @@
             <fieldset>
                 <legend>Add New Project</legend>
 
-                <div>
+                <div class="addProjectTitle">
                     <label for="projectTitle">Title</label>
-                    <input type="text" id="projectTitle" name="projectTitle" value="test1">
+                    <input type="text" id="projectTitle" name="projectTitle" placeholder="Project Title">
                 </div>
-                <div>
+                <div class="addProjectDescription">
                     <label for="projectDescription">Description</label>
-                    <textarea id="projectDescription" name="projectDescription" maxlength="150">test1</textarea>
+                    <textarea id="projectDescription" name="projectDescription" maxlength="150" placeholder="Project Description"></textarea>
                 </div>
-                <div>
+                <div class="addProjectDueDate">
                     <label for="projectDueDate">Due Date</label>
-                    <input type="date" id="projectDueDate" name="projectDueDate" value="2025-07-23" min="2000-01-01" max="2100-12-31"/>
+                    <input type="date" id="projectDueDate" name="projectDueDate" min="2000-01-01" max="2100-12-31"/>
                 </div>
-                <div>
+                <div class="addProjectPriotity">
                     <label for="projectPriotity">Priority</label>
                     <select id="projectPriotity" name="projectPriotity">
                         <option value="low">LOW</option>
@@ -175,57 +175,12 @@
 
     <dialog id="infoProjectModal" class="info modal">
         <div class="infoContent">
-            <div class="infoTitle">
-                <h1>PROJECT TITLE</h1>
-                <div class="editIcon" title="Click to edit"></div>                  
-            </div> 
-            <div class="infoProgress">
-                <progress class="infoProgressBar" value="70" max="100"></progress> 
-                <div class="infoProgressPercentage infoLabel">100%</div>                
-                <div class="infoTotalTasks">
-                    <div class="infoLabel">TOTAL TASKS:</div>
-                    <div class="infoData">10</div>
-                </div>
-                <div class="infoDoneTasks">
-                    <div class="infoLabel">TASKS DONE:</div>
-                    <div class="infoData">7</div>
-                </div>
-            </div>
-            <div class="infoDate">
-                <p class="infoLabel">DUE DATE</p>
-                <p class="infoData">Wed 24/Dec/2025</p>
-                <div class="editIcon" title="Click to edit"></div> 
-            </div>
-            <div class="infoPriority">
-                <svg viewBox="0 0 24 24" fill="red" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier"> 
-                        <path d="M21.7605 15.92L15.3605 4.4C14.5005 2.85 13.3105 2 12.0005 2C10.6905 2 9.50047 2.85 8.64047 4.4L2.24047 15.92C1.43047 17.39 1.34047 18.8 1.99047 19.91C2.64047 21.02 3.92047 21.63 5.60047 21.63H18.4005C20.0805 21.63 21.3605 21.02 22.0105 19.91C22.6605 18.8 22.5705 17.38 21.7605 15.92ZM11.2505 9C11.2505 8.59 11.5905 8.25 12.0005 8.25C12.4105 8.25 12.7505 8.59 12.7505 9V14C12.7505 14.41 12.4105 14.75 12.0005 14.75C11.5905 14.75 11.2505 14.41 11.2505 14V9ZM12.7105 17.71C12.6605 17.75 12.6105 17.79 12.5605 17.83C12.5005 17.87 12.4405 17.9 12.3805 17.92C12.3205 17.95 12.2605 17.97 12.1905 17.98C12.1305 17.99 12.0605 18 12.0005 18C11.9405 18 11.8705 17.99 11.8005 17.98C11.7405 17.97 11.6805 17.95 11.6205 17.92C11.5605 17.9 11.5005 17.87 11.4405 17.83C11.3905 17.79 11.3405 17.75 11.2905 17.71C11.1105 17.52 11.0005 17.26 11.0005 17C11.0005 16.74 11.1105 16.48 11.2905 16.29C11.3405 16.25 11.3905 16.21 11.4405 16.17C11.5005 16.13 11.5605 16.1 11.6205 16.08C11.6805 16.05 11.7405 16.03 11.8005 16.02C11.9305 15.99 12.0705 15.99 12.1905 16.02C12.2605 16.03 12.3205 16.05 12.3805 16.08C12.4405 16.1 12.5005 16.13 12.5605 16.17C12.6105 16.21 12.6605 16.25 12.7105 16.29C12.8905 16.48 13.0005 16.74 13.0005 17C13.0005 17.26 12.8905 17.52 12.7105 17.71Z"></path> 
-                    </g>
-                </svg>
-                <p class="infoData">LOW</p>
-                <div class="editIcon" title="Click to edit"></div> 
-                <p class="infoLabel">PRIORITY</p>  
-            </div>
-            <div class="infoDescription">
-                <p class="infoLabel">DESCRIPTION</p>
-                <div class="editIcon" title="Click to edit"></div>
-                <p class="infoData">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit. 
-                    Consectetur adipiscing elit quisque faucibu.
-                    Lorem ipsum dolor sit amet consectetur adipiscing.
-                </p>
-            </div>
-            <div class="infoNote">
-                <p class="infoLabel">NOTES</p>
-                <div class="editIcon" title="Click to edit"></div>
-                <p class="infoData">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit. 
-                    Consectetur adipiscing elit quisque faucibu.
-                    Lorem ipsum dolor sit amet consectetur adipiscing.
-                </p>
-            </div>
+            <div class="infoTitle"></div> 
+            <div class="infoProgress"></div>
+            <div class="infoDate"></div>
+            <div class="infoPriority"></div>
+            <div class="infoDescription"></div>
+            <div class="infoNote"></div>
             <div class="deleteProjectDIV">
                 <svg class="deleteProject" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -245,57 +200,13 @@
 
     <dialog id="infoTaskModal" class="info modal">
         <div class="infoContent">
-            <div class="infoTitle">
-                <h1>TASK TITLE</h1>
-                <div class="editIcon" title="Click to edit"></div>                
-            </div>
-            <div class="infoProject">
-                <p>Project</p>
-                <div class="editIcon" title="Click to edit"></div>  
-            </div>
-            <div class="infoStatus">
-                <p class="infoLabel">TASK STATUS</p>
-                <div class="infoData">To Do
-                    <div class="editIcon" title="Click to edit"></div> 
-                </div>
-            </div>
-            <div class="infoDate">
-                <p class="infoLabel">DUE DATE</p>
-                <div class="infoData">Wed 24/Dec/2025
-                    <div class="editIcon" title="Click to edit"></div> 
-                </div>
-            </div>
-            <div class="infoPriority">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier"> 
-                        <path d="M21.7605 15.92L15.3605 4.4C14.5005 2.85 13.3105 2 12.0005 2C10.6905 2 9.50047 2.85 8.64047 4.4L2.24047 15.92C1.43047 17.39 1.34047 18.8 1.99047 19.91C2.64047 21.02 3.92047 21.63 5.60047 21.63H18.4005C20.0805 21.63 21.3605 21.02 22.0105 19.91C22.6605 18.8 22.5705 17.38 21.7605 15.92ZM11.2505 9C11.2505 8.59 11.5905 8.25 12.0005 8.25C12.4105 8.25 12.7505 8.59 12.7505 9V14C12.7505 14.41 12.4105 14.75 12.0005 14.75C11.5905 14.75 11.2505 14.41 11.2505 14V9ZM12.7105 17.71C12.6605 17.75 12.6105 17.79 12.5605 17.83C12.5005 17.87 12.4405 17.9 12.3805 17.92C12.3205 17.95 12.2605 17.97 12.1905 17.98C12.1305 17.99 12.0605 18 12.0005 18C11.9405 18 11.8705 17.99 11.8005 17.98C11.7405 17.97 11.6805 17.95 11.6205 17.92C11.5605 17.9 11.5005 17.87 11.4405 17.83C11.3905 17.79 11.3405 17.75 11.2905 17.71C11.1105 17.52 11.0005 17.26 11.0005 17C11.0005 16.74 11.1105 16.48 11.2905 16.29C11.3405 16.25 11.3905 16.21 11.4405 16.17C11.5005 16.13 11.5605 16.1 11.6205 16.08C11.6805 16.05 11.7405 16.03 11.8005 16.02C11.9305 15.99 12.0705 15.99 12.1905 16.02C12.2605 16.03 12.3205 16.05 12.3805 16.08C12.4405 16.1 12.5005 16.13 12.5605 16.17C12.6105 16.21 12.6605 16.25 12.7105 16.29C12.8905 16.48 13.0005 16.74 13.0005 17C13.0005 17.26 12.8905 17.52 12.7105 17.71Z"></path> 
-                    </g>
-                </svg>
-                <div class="infoData">LOW
-                    <div class="editIcon" title="Click to edit"></div> 
-                </div>
-                <p class="infoLabel">PRIORITY</p>
-            </div>
-            <div class="infoDescription">
-                <p class="infoLabel">DESCRIPTION</p>
-                <div class="editIcon" title="Click to edit"></div>
-                <div class="infoData">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit. 
-                    Consectetur adipiscing elit quisque faucibu.
-                    Lorem ipsum dolor sit amet consectetur adipiscing. 
-                </div>
-            </div>
-            <div class="infoNote">
-                <p class="infoLabel">NOTES</p>
-                <div class="editIcon" title="Click to edit"></div>
-                <div class="infoData">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit. 
-                    Consectetur adipiscing elit quisque faucibu.
-                    Lorem ipsum dolor sit amet consectetur adipiscing. 
-                </div>
-            </div>
+            <div class="infoTitle"></div>
+            <div class="infoProject"></div>
+            <div class="infoStatus"></div>
+            <div class="infoDate"></div>
+            <div class="infoPriority"></div>
+            <div class="infoDescription"></div>
+            <div class="infoNote"></div>
             <div class="deleteTaskDIV">
                 <svg class="deleteTask" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
